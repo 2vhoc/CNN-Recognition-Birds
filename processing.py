@@ -27,31 +27,30 @@ for folder in os.listdir(path):
     Xtrain.extend(typeBird)
     i += 1
 
-# from tensorflow.keras.models import Sequential
-# from tensorflow.keras.layers import Dense, Conv2D, MaxPooling2D, Flatten, Activation, Dropout
-# import tensorflow as tf
-# Model = Sequential()
-# Model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', padding='same', input_shape=(224, 224, 3)))
-# Model.add(MaxPooling2D(pool_size=(2, 2)))
-# Model.add(Dropout(0.15))
-#
-# Model.add(Conv2D(32, (3, 3), activation='relu'))
-# Model.add(MaxPooling2D(pool_size=(2, 2)))
-# Model.add(Dropout(0.2))
-#
-# Model.add(Conv2D(64, (3, 3), activation='relu'))
-# Model.add(MaxPooling2D(pool_size=(2, 2)))
-# Model.add(Dropout(0.2))
-#
-# Model.add(Flatten())
-# Model.add(Dense(512, activation='relu'))
-# Model.add(Dense(128, activation='relu'))
-# Model.add(Dense(6, activation='softmax'))
-#
-# Model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-# Model.fit(np.array([x[0] for x in Xtrain]).astype('float')/255.0, np.array([y[1] for y in Xtrain]), epochs=10, batch_size=32, validation_split=0.2)
-# Model.save('modelBird.h5')
-# print('OK')
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Conv2D, MaxPooling2D, Flatten, Activation, Dropout
+import tensorflow as tf
+Model = Sequential()
+Model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', padding='same', input_shape=(224, 224, 3)))
+Model.add(MaxPooling2D(pool_size=(2, 2)))
+Model.add(Dropout(0.15))
+Model.add(Conv2D(32, (3, 3), activation='relu'))
+Model.add(MaxPooling2D(pool_size=(2, 2)))
+Model.add(Dropout(0.2))
+
+Model.add(Conv2D(64, (3, 3), activation='relu'))
+Model.add(MaxPooling2D(pool_size=(2, 2)))
+Model.add(Dropout(0.2))
+
+Model.add(Flatten())
+Model.add(Dense(512, activation='relu'))
+Model.add(Dense(128, activation='relu'))
+Model.add(Dense(6, activation='softmax'))
+
+Model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+Model.fit(np.array([x[0] for x in Xtrain]).astype('float')/255.0, np.array([y[1] for y in Xtrain]), epochs=10, batch_size=32, validation_split=0.2)
+Model.save('modelBird.h5')
+print('OK')
 from tensorflow.keras.models import load_model
 
 H = load_model('modelBird.h5')
